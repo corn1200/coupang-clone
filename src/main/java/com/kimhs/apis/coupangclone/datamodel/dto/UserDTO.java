@@ -15,6 +15,7 @@ public class UserDTO {
     private String password;
     private String name;
     private Date registryDate;
+    
     public UserDTO(User user) {
         this.email = user.getEmail();
         this.password = user.getPassword();

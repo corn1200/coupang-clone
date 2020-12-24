@@ -1,6 +1,7 @@
 package com.kimhs.apis.coupangclone.route;
 
 import com.kimhs.apis.coupangclone.datamodel.dto.UserDTO;
+import com.kimhs.apis.coupangclone.datamodel.vo.UserLoginCheckVO;
 import com.kimhs.apis.coupangclone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +37,7 @@ public class UserRoute {
     }
 
     @PostMapping("/login")
-    public Boolean checkLoginInvalid() {
+    public Boolean checkLoginInvalid(UserLoginCheckVO userLoginCheckVO) {
         return null;
     }
 

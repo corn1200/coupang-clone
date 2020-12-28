@@ -2,6 +2,7 @@ package com.kimhs.apis.coupangclone.service;
 
 import com.kimhs.apis.coupangclone.datamodel.dto.UserDTO;
 import com.kimhs.apis.coupangclone.datamodel.vo.UserLoginCheckVO;
+import com.kimhs.apis.coupangclone.exception.ControllableException;
 import com.kimhs.apis.coupangclone.model.User;
 import com.kimhs.apis.coupangclone.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +27,14 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public UserDTO getUserById(int userId) throws Exception {
+    public UserDTO getUserById(int userId) throws ControllableException {
         Optional<User> searchedUser = this.userRepository.findById(userId);
-        return new UserDTO(searchedUser.orElseThrow(() -> new Exception("해당 유저를 찾지 못하였습니다.")));
+        return new UserDTO(searchedUser.orElseThrow(() -> new ControllableException("해당 유저를 찾지 못하였습니다.")));
     }
 
-    public UserDTO getUserByEmail(String userEmail) throws Exception {
+    public UserDTO getUserByEmail(String userEmail) throws ControllableException {
         Optional<User> searchedUser = Optional.ofNullable(this.userRepository.findByEmail(userEmail));
-        return new UserDTO(searchedUser.orElseThrow(() -> new Exception("해당 유저를 찾지 못하였습니다.")));
+        return new UserDTO(searchedUser.orElseThrow(() -> new ControllableException("해당 유저를 찾지 못하였습니다.")));
     }
 
     public Boolean checkLoginInvalid(UserLoginCheckVO userLoginCheckVO) {

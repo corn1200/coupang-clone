@@ -35,11 +35,11 @@ public class SellerRoute {
     public void updateCompanyAddress(@PathVariable(value = "seller_id") String sellerId) {
     }
 
-    @GetMapping("/update/{seller_id}")
-    public void updateName(@PathVariable(value = "seller_id") String sellerId) {
+    @GetMapping("/update/name/{seller_name}")
+    public void updateName(@PathVariable(value = "seller_name") String sellerId) {
     }
 
-    @GetMapping("/update/{seller_id}")
+    @GetMapping("/update/id/{seller_id}")
     public void updateBusinessForm(@PathVariable(value = "seller_id") String sellerId) {
     }
 

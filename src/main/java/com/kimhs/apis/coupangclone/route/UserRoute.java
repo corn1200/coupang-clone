@@ -2,6 +2,7 @@ package com.kimhs.apis.coupangclone.route;
 
 import com.kimhs.apis.coupangclone.datamodel.dto.UserDTO;
 import com.kimhs.apis.coupangclone.datamodel.vo.UserLoginCheckVO;
+import com.kimhs.apis.coupangclone.exception.ControllableException;
 import com.kimhs.apis.coupangclone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,13 +22,13 @@ public class UserRoute {
     @GetMapping("")
     @ResponseBody
     public List<UserDTO> getUsers() {
-        return null;
+        return userService.getUsers();
     }
 
     @GetMapping("/id/{user_id}")
     @ResponseBody
-    public UserDTO getUserById(@PathVariable(value = "user_id") String userId) {
-        return null;
+    public UserDTO getUserById(@PathVariable(value = "user_id") String userId) throws ControllableException {
+        return userService.getUserById(Integer.parseInt(userId));
     }
 
     @GetMapping("/email/{user_email}")
